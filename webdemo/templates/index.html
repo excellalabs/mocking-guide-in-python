@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="header">
+<h1>Welcome to the Python Mocking Webapp!</h1>
+</div>
+
+
+<h2 class="challenge-header u-full-width">
+  Exercise 1: Mocking Me
+</h2>
+<div class="container challenge">
+  <div class="row">
+    <p>Create a customized 'mocking' gif with your name on it:</p>
+
+    <form action="javascript:mockingMe()">
+      <div class="row">
+        <div class="six columns">
+          <label for="mockingMeNameInput">Your name</label>
+          <input class="u-full-width" value="Guido van Rossum" id="mockingMeNameInput">
+        </div>
+      </div>
+      <input class="button-primary" type="submit" value="Submit">
+    </form>
+    <div class="result"></div>
+
+  </div>
+</div>
+
+<h2 class="challenge-header u-full-width">
+  Exercise 2: Mocking Bird
+</h2>
+
+<div class="container challenge" id="challenge2">
+  <div class="row">
+    <div class="six columns blockquote">
+    <p>Hush, little baby, don't say a word,<br />Mama's gonna buy you a mockingbird.<br /><br />And if that mockingbird don't sing,<br />Mama's gonna buy you a diamond ring.</p>
+    </div>
+    <div class="six columns">
+      <p>The question is...</p>
+      <input class="button-primary" type="button" onclick="mockingBird()" value="Does the mockingbird sing?">
+    </div>
+  </div>
+  <div class="result"></div>
+</div>
+
+<h2 class="challenge-header u-full-width">
+  Exercise 3: Mocking Jay
+</h2>
+
+<div class="container challenge" id="challenge3">
+  <div class="row">
+    <p>Who will Katniss encounter next?</p>
+
+    <form>
+      <div class="row">
+        <div class="six columns">
+          <label for="mockingJayNameInput">Character name</label>
+          <select id="mockingJayNameInput">
+            <option value="Peeta">Peeta</option>
+            <option value="Gale">Gale</option>
+            <option value="Haymitch">Haymitch</option>
+            <option value="Snow">Snow</option>
+            <option value="Coin">Coin</option>
+          </select>
+        </div>
+      </div>
+      <input class="button-primary" type="button" onclick="mockingJay()" value="Submit">
+    </form>
+
+  </div>
+  <div class="result"></div>
+</div>
+
+<script src="/static/js/ajax.js"></script>
+
+{% endblock %}

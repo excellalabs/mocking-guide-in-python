@@ -46,6 +46,8 @@ Unit tests should be fast, and not dependent on an external tool or class.  Thos
 
 #### What you need to do:
 
+ * Find the mock documentation for your version of python
+   * [Python 2 Mock](https://docs.python.org/dev/library/unittest.mock.html) [Python 3 Mock](https://docs.python.org/3/library/unittest.mock.html)
  * Read about mock's `patch` tool
  * Read about mock's `return_value` capability
  * Use `patch` to mock `requests.post` in the two tests
@@ -93,8 +95,10 @@ Review the code for `mocking/jay.py`, and the partially completed `tests/test_mo
 
 #### What you need to do:
 
- * Recall what you learned about `patch` and `return_value` in the first challenge
- * Read about mock's assertion tools (called, called_with_args, etc.)
+ * Recall what you learned about `patch` and `return_value` in the previous challenges
+ * Read about the Mock class
+   * attributes like `called` and `call_count`
+   * assertion helpers like `assert_called_once_with` and `assert_has_calls`
  * Use `patch` to mock `hug` in the two tests
    * In the first test, ensure `hug` is executed
    * In the first test, ensure `hug` is not executed
@@ -107,3 +111,16 @@ Review the code for `mocking/jay.py`, and the partially completed `tests/test_mo
 pytest
 ```
 
+
+## Web Demo
+
+The Flask web demo is not required to complete all the exercises, but it does give a visual feel for what the functions do.
+
+To run the web demo:
+
+```shell
+pip install -r webdemo/requirements.txt
+python -m webdemo.app
+```
+
+The following link should work in your browser: http://localhost:5000
