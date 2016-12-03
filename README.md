@@ -1,124 +1,137 @@
 # Mocking Guide (in Python)
 
-
 Python provides a mock library that is essential for writing unit tests, but can be intimidating to folks new to mocking.
 
-This is a guide for those who are new to the concept of test mocking, also known as 'stubbing'.
+This is a hands-on guide for those who are new to the concept of test mocks, also known as 'stubs', 'fakes', and 'test doubles'.
 
 ### How to install
 
 Clone this repo
 
-```shell
+```
 git clone https://github.com/excellalabs/mocking-guide-in-python
 cd mocking-guide-in-python
 ```
 
 Install the dependencies
 
-```shell
+```
 virtualenv env
 . env/bin/activate
 pip install -r requirements.txt
 ```
 
-# The Challenges
+# The Exercises
 
-This repo has three modules with partially written (and failing) tests.  Run the following command to run the failing tests:
+This repo has three modules with partially written (and failing) tests.  Execute the following command to run the failing tests:
 
-```shell
+```
 pytest
 ```
 
 You'll notice that some of the tests take a long time to run.  This is because they're hitting an external API that takes a while to respond.  Let's fix that first...
 
-### Challenge 1: Mocking Me
+### Exercise 1: Mocking Me
 
 Review the code for `mocking/me.py`, and the partially completed `tests/test_mocking_me.py`.
 
+Notice the code for `via_gif` hits an external API.  How do we test that the function handles response codes correctly? Do the tests run quickly?
+
 #### Why do we need mocks?
 
+Unit tests should test the smallest testable part of an application. Tests that hit outside code or APIs are integration tests, not unit tests.
 
- * What happens if the third party API is not available when running tests?
- * What happens if an API is really slow to create a result?
+Mocking is a mechanism to remove outside dependencies so you can create proper unit tests.
 
-Unit tests should be fast, and not dependent on an external tool or class.  Those types of tests are integration tests, not unit tests.
+ * Run tests even if the API is not available
+ * Create scenarios that are hard to reproduce with the real interface
+ * Tests run quickly even if the real interface is slow
 
 #### What you need to do:
 
- * Find the mock documentation for your version of python
-   * [Python 2 Mock](https://docs.python.org/dev/library/unittest.mock.html) [Python 3 Mock](https://docs.python.org/3/library/unittest.mock.html)
- * Read about mock's `patch` tool
- * Read about mock's `return_value` capability
- * Use `patch` to mock `requests.post` in the two tests
+ * Open the mock [documentation](https://docs.python.org/dev/library/unittest.mock.html)
+   * Read about library's `patch` decorator
+   * Read about the Mock object's `return_value` capability
+ * Use `patch` to replace requests's `post` function with a dummy Mock object
    * In the first test, get the `via_gif` function to return "gif content"
+     * Hint: `return_value` is pretty flexible, there is no need to create a "response" object to house the `_content` element. You can simply do `mock_object.return_value._content = 'gif content'`
    * In the second test, get the `via_gif` function to throw an Exception
 
 #### How to know you're done:
 
  * You're done when the following command results in two passing tests:
 
-```shell
+```
 pytest tests/test_mocking_me.py
 ```
 
-### Challenge 2: Mocking Bird
+### Exercise 2: Mocking Bird
 
 Review the code for `mocking/bird.py`, and the partially completed `tests/test_mocking_bird.py`.
 
+The tests actually pass... sometimes... try running the tests 10 times, and see how many pass
+
+```shell
+for i in {1..10}; do pytest tests/test_mocking_bird.py ; done
+```
+
 #### Why do we need mocks?
 
- * What happens if the code we're integrating with has unpredictable results?
+ * Create predictable scenarios for interfaces that have unpredictable results
 
 #### What you need to do:
 
- * Recall what you learned about `patch` and `return_value` in the first challenge
+ * Recall what you learned about `patch` and `return_value` in the first exercise
  * Use `patch` to mock `randomint` in the two tests
    * In the first test, ensure `sing()` always returns "chirp chirp"
    * In the second test, ensure `sing()` always throws an error
 
 #### How to know you're done:
 
- * You're done when the following command results in two passing tests:
+ * You're done when the following command results in two passing tests every time:
 
 ```shell
-pytest tests/test_mocking_bird.py
+for i in {1..10}; do pytest tests/test_mocking_bird.py ; done
 ```
 
-### Challenge 3: Mocking Jay
+### Exercise 3: Mocking Jay
 
 Review the code for `mocking/jay.py`, and the partially completed `tests/test_mocking_jay.py`.
 
+How do we test if `hug()` gets called when we expect it to?
+
 #### Why do we need mocks?
 
- * What happens if the code we're integrating with has no return value?
+ * Test interactions with interfaces that have no return value
 
 #### What you need to do:
 
- * Recall what you learned about `patch` and `return_value` in the previous challenges
+ * Recall what you learned about `patch` and `return_value` in the previous exercises
  * Read about the Mock class
    * attributes like `called` and `call_count`
    * assertion helpers like `assert_called_once_with` and `assert_has_calls`
  * Use `patch` to mock `hug` in the two tests
+ * Use Mock's attribute `called` to fix the tests
    * In the first test, ensure `hug` is executed
-   * In the first test, ensure `hug` is not executed
+   * In the first test, ensure `hug` is NOT executed
+ * Bonus: Get the tests passing with `assert_called_once_with`
 
 #### How to know you're done:
 
  * You're done when all tests pass
 
-```shell
+```
 pytest
 ```
 
 
-## Web Demo
+# Web Demo
 
 The Flask web demo is not required to complete all the exercises, but it does give a visual feel for what the functions do.
 
 To run the web demo:
 
-```shell
+```
 pip install -r webdemo/requirements.txt
 python -m webdemo.app
 ```

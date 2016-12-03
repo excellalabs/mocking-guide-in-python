@@ -11,7 +11,7 @@ class Bird():
 
     def sing(self):
 
-        if random.randint(1, 3) == 1:
+        if random.randint(1, 2) == 1:
             raise MockingBirdDontSingException()
         else:
             return "chirp chirp"
