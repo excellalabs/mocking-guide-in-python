@@ -1,4 +1,4 @@
-from mocking.jay import Jay, PEETA, SNOW
+from mocking.jay import Jay
 
 try:
     from mock import patch
@@ -19,7 +19,7 @@ class TestMockingJay:
         jay = Jay()
 
         # Act
-        jay.encounter(PEETA)
+        jay.encounter('peeta')
 
         # Assert
         # TODO add assert confirming a hug occurred
@@ -30,7 +30,7 @@ class TestMockingJay:
         jay = Jay()
 
         # Act
-        jay.encounter(SNOW)
+        jay.encounter('snow')
 
         # Assert
         # TODO add assert confirming a hug did NOT occur

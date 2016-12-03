@@ -2,21 +2,16 @@ import requests
 
 dummy_api = 'http://httpbin.org/post'
 
-PEETA = 'peeta'
-GALE = 'gale'
-HAYMITCH = 'haymitch'
-SNOW = 'snow'
-COIN = 'coin'
-
 
 class Jay():
 
-    friends = [PEETA, GALE, HAYMITCH]
+    friends = ['peeta', 'gale', 'haymitch']
 
-    def hug(self):
-        requests.post(dummy_api, json={'grab_tissues': True})
+    def hug(self, friend):
+        requests.post(dummy_api, json={'friend': friend,
+                                       'grab_tissues': True})
 
     def encounter(self, character):
         if character.lower() in self.friends:
-            self.hug()
+            self.hug(character)
         return "%s encountered" % character
