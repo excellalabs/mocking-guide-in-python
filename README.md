@@ -2,24 +2,49 @@
 
 Python provides a mock library that is essential for writing unit tests, but can be intimidating to folks new to mocking.
 
-This is a hands-on guide for those who are new to the concept of test mocks, also known as 'stubs', 'fakes', and 'test doubles'.
+This is a hands-on guide for those who are new to testing with mocks, also known as 'stubs', 'fakes', and 'test doubles'.
 
-### How to install
+### Before you begin
 
-Clone this repo
+This guide assumes a general knowledge about the Python programming language.
+
+To complete the exercises, you will need the following software installed on your system:
+
+* Python 2 or 3
+* virtualenv
+* pip
+
+The commands provided in this guide are targeted to folks using a bash environment (Mac, Linux).  You will likely need to perform different steps on a Windows machine.
+
+### How to install this guide
+
+First, clone this repo
 
 ```
 git clone https://github.com/excellalabs/mocking-guide-in-python
 cd mocking-guide-in-python
 ```
 
-Install the dependencies
+Then install the python dependencies in a virtual environment
 
 ```
 virtualenv env
 . env/bin/activate
 pip install -r requirements.txt
 ```
+
+# Demo Web App
+
+A demo web app, written in Flask, provides example integrations with the code we cover in the three exercises. The demo is not required to complete the exercises.
+
+To run the demo:
+
+```
+pip install -r demo/requirements.txt
+python -m demo.app
+```
+
+The following link should work in your browser: [http://localhost:5000](http://localhost:5000)
 
 # The Exercises
 
@@ -123,17 +148,3 @@ How do we test if `hug()` gets called when we expect it to?
 ```
 pytest
 ```
-
-
-# Web Demo
-
-The Flask web demo is not required to complete all the exercises, but it does give a visual feel for what the functions do.
-
-To run the web demo:
-
-```
-pip install -r webdemo/requirements.txt
-python -m webdemo.app
-```
-
-The following link should work in your browser: http://localhost:5000
