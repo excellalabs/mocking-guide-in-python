@@ -56,41 +56,7 @@ pytest
 
 You'll notice that some of the tests take a long time to run.  This is because they're hitting an external API that takes a while to respond.  Let's fix that first...
 
-### Exercise 1: Mocking Me
-
-Review the code for `mocking/me.py`, and the partially completed `tests/test_mocking_me.py`.
-
-Notice the code for `via_gif` hits an external API.  How do we test that the function handles response codes correctly? Do the tests run quickly?
-
-#### Why do we need mocks?
-
-Unit tests should test the smallest testable part of an application. Tests that hit outside code or APIs are integration tests, not unit tests.
-
-Mocking is a mechanism to remove outside dependencies so you can create proper unit tests.
-
- * Run tests even if the API is not available
- * Create scenarios that are hard to reproduce with the real interface
- * Tests run quickly even if the real interface is slow
-
-#### What you need to do:
-
- * Open the mock [documentation](https://docs.python.org/dev/library/unittest.mock.html)
-   * Read about library's `patch` decorator
-   * Read about the Mock object's `return_value` capability
- * Use `patch` to replace requests's `post` function with a dummy Mock object
-   * In the first test, get the `via_gif` function to return "gif content"
-     * Hint: `return_value` is pretty flexible, there is no need to create a "response" object to house the `_content` element. You can simply do `mock_object.return_value._content = 'gif content'`
-   * In the second test, get the `via_gif` function to throw an Exception
-
-#### How to know you're done:
-
- * You're done when the following command results in two passing tests:
-
-```
-pytest tests/test_mocking_me.py
-```
-
-### Exercise 2: Mocking Bird
+### Exercise 1: Mocking Bird
 
 Review the code for `mocking/bird.py`, and the partially completed `tests/test_mocking_bird.py`.
 
@@ -106,7 +72,9 @@ for i in {1..10}; do pytest tests/test_mocking_bird.py ; done
 
 #### What you need to do:
 
- * Recall what you learned about `patch` and `return_value` in the first exercise
+ * Open the mock [documentation](https://docs.python.org/dev/library/unittest.mock.html)
+   * Read about library's `patch` decorator
+   * Read about the Mock object's `return_value` capability
  * Use `patch` to mock `randomint` in the two tests
    * In the first test, ensure `sing()` always returns "chirp chirp"
    * In the second test, ensure `sing()` always throws an error
@@ -117,6 +85,38 @@ for i in {1..10}; do pytest tests/test_mocking_bird.py ; done
 
 ```shell
 for i in {1..10}; do pytest tests/test_mocking_bird.py ; done
+```
+
+### Exercise 2: Mocking Me
+
+Review the code for `mocking/me.py`, and the partially completed `tests/test_mocking_me.py`.
+
+Notice the code for `via_gif` hits an external API.  How do we test that the function handles response codes correctly? Do the tests run quickly?
+
+#### Why do we need mocks?
+
+Unit tests should test the smallest testable part of an application. Tests that hit outside code or APIs are integration tests, not unit tests.
+
+Mocking is a mechanism to decouple outside dependencies, making it easy to create proper unit tests.
+
+ * Run tests even if the API is not available
+ * Create scenarios that are hard to reproduce with the real interface
+ * Tests run quickly even if the real interface is slow
+
+#### What you need to do:
+
+ * Recall what you learned about `patch` and `return_value` in the first exercise
+ * Use `patch` to replace requests's `post` function with a dummy Mock object
+   * In the first test, get the `via_gif` function to return "gif content"
+     * Hint: `return_value` is pretty flexible, there is no need to create a "response" object to house the `_content` element. You can simply do `mock_object.return_value._content = 'gif content'`
+   * In the second test, get the `via_gif` function to throw an Exception
+
+#### How to know you're done:
+
+ * You're done when the following command results in two passing tests:
+
+```
+pytest tests/test_mocking_me.py
 ```
 
 ### Exercise 3: Mocking Jay

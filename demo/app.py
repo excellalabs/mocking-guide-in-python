@@ -24,7 +24,7 @@ def api_mocking_bird_sing():
     b = bird.Bird()
     try:
         result = b.sing()
-    except bird.MockingBirdDontSingException:
+    except bird.DiamondRingException:
         result = "This mocking bird don't sing"
     return result
 

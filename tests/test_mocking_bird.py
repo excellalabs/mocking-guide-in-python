@@ -1,4 +1,4 @@
-from mocking.bird import Bird, MockingBirdDontSingException
+from mocking.bird import Bird, DiamondRingException
 from unittest import TestCase
 
 try:
@@ -11,7 +11,7 @@ except ImportError:
 #     test has the same problem!  Make is so that both tests ALWAYS pass.
 
 
-class TestMockingMe(TestCase):
+class TestMockingBird(TestCase):
 
     # TODO patch here
     def test_mocking_bird_when_sing_then_get_song(self):
@@ -26,11 +26,11 @@ class TestMockingMe(TestCase):
         assert result == "chirp chirp"
 
     # TODO patch here
-    def test_mocking_bird_when_dont_sing_then_get_diamong_ring_exception(self):
+    def test_mocking_bird_when_dont_sing_then_get_diamond_ring_exception(self):
         # Arrange
         bird = Bird()
         # TODO set patch object's return value(s)
 
         # Act
         # Assert
-        self.assertRaises(MockingBirdDontSingException, bird.sing)
+        self.assertRaises(DiamondRingException, bird.sing)

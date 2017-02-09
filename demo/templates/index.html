@@ -1,82 +1,94 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Python Mocking Web App</title>
 
-{% block title %}Python Mocking Web App{% endblock %}
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% block content %}
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
-<div class="header">
-<h1>Welcome to the Python Mocking Web App!</h1>
-</div>
+  <link rel="stylesheet" href="/static/css/normalize.min.css">
+  <link rel="stylesheet" href="/static/css/skeleton.min.css">
+  <link rel="stylesheet" href="/static/css/demo.css">
+</head>
+<body>
+  <h1 class="header">Welcome to the Python Mocking Web App!</h1>
 
+  <h2 class="challenge-header u-full-width">
+    <span class="subheader">Exercise 1:</span> Mocking Me
+  </h2>
 
-<h2 class="challenge-header u-full-width">
-  <span class="subheader">Exercise 1:</span> Mocking Me
-</h2>
-
-<div class="container challenge" id="challenge1">
-  <div class="row">
-    <h5>Sometimes an external API is slow...</h5>
+  <div class="container challenge" id="challenge1">
+    <div class="row">
+      <h5>Sometimes an external API is slow...</h5>
+    </div>
+    <div class="row">
+      <form action="javascript:mockingMe()">
+        <div class="five columns offset-by-one">
+          <label for="mockingMeNameInput">Your name</label>
+          <input value="Guido van Rossum" id="mockingMeNameInput">
+        </div>
+        <div class="five columns submit">
+          <input class="button-primary" type="submit" value="Create Gif">
+        </div>
+      </form>
+    </div>
   </div>
-  <div class="row">
-    <form action="javascript:mockingMe()">
-      <div class="five columns offset-by-one">
-        <label for="mockingMeNameInput">Your name</label>
-        <input value="Guido van Rossum" id="mockingMeNameInput">
+
+  <h2 class="challenge-header u-full-width">
+    <span class="subheader">Exercise 2:</span> Mocking Bird
+  </h2>
+
+  <div class="container challenge" id="challenge2">
+    <div class="row">
+      <h5>How do you test a random result?</h5>
+    </div>
+    <div class="row">
+      <div class="five columns offset-by-one blockquote">
+        <p>Hush, little baby, don't say a word,<br />Mama's gonna buy you a mockingbird.<br /><br />And if that mockingbird don't sing,<br />Mama's gonna buy you a diamond ring.</p>
       </div>
       <div class="five columns submit">
-        <input class="button-primary" type="submit" value="Create Gif">
+        <input class="button-primary" type="button" onclick="mockingBird()" value="Does the mockingbird sing?">
+      </div>
+    </div>
+    <div class="result">&nbsp;</div>
+  </div>
+
+  <h2 class="challenge-header u-full-width">
+    <span class="subheader">Exercise 3:</span> Mocking Jay
+  </h2>
+
+  <div class="container challenge" id="challenge3">
+    <div class="row">
+      <h5>What's happening on the backend?</h5>
+    </div>
+    <form>
+      <div class="row">
+        <div class="five columns offset-by-one">
+          <label for="mockingJayNameInput">Character name</label>
+          <select style='width: 75%' id="mockingJayNameInput">
+            <option value="Peeta">Peeta</option>
+            <option value="Gale">Gale</option>
+            <option value="Haymitch">Haymitch</option>
+            <option value="Snow">Snow</option>
+            <option value="Coin">Coin</option>
+          </select>
+        </div>
+        <div class="five columns submit">
+          <input class="button-primary" type="button" onclick="mockingJay()" value="Create an encounter">
+        </div>
       </div>
     </form>
+    <div class="result">&nbsp;</div>
   </div>
-</div>
 
-<h2 class="challenge-header u-full-width">
-  <span class="subheader">Exercise 2:</span> Mocking Bird
-</h2>
-
-<div class="container challenge" id="challenge2">
-  <div class="row">
-    <h5>How do you test a random result?</h5>
+  <div class="footer ui-full-width">
+    Brought to you by Excella Consulting
   </div>
-  <div class="row">
-    <div class="five columns offset-by-one blockquote">
-      <p>Hush, little baby, don't say a word,<br />Mama's gonna buy you a mockingbird.<br /><br />And if that mockingbird don't sing,<br />Mama's gonna buy you a diamond ring.</p>
-    </div>
-    <div class="five columns submit">
-      <input class="button-primary" type="button" onclick="mockingBird()" value="Does the mockingbird sing?">
-    </div>
-  </div>
-  <div class="result">&nbsp;</div>
-</div>
 
-<h2 class="challenge-header u-full-width">
-  <span class="subheader">Exercise 3:</span> Mocking Jay
-</h2>
-
-<div class="container challenge" id="challenge3">
-  <div class="row">
-    <h5>What's happening on the backend?</h5>
-  </div>
-  <form>
-    <div class="row">
-      <div class="five columns offset-by-one">
-        <label for="mockingJayNameInput">Character name</label>
-        <select style='width: 75%' id="mockingJayNameInput">
-          <option value="Peeta">Peeta</option>
-          <option value="Gale">Gale</option>
-          <option value="Haymitch">Haymitch</option>
-          <option value="Snow">Snow</option>
-          <option value="Coin">Coin</option>
-        </select>
-      </div>
-      <div class="five columns submit">
-        <input class="button-primary" type="button" onclick="mockingJay()" value="Create an encounter">
-      </div>
-    </div>
-  </form>
-  <div class="result">&nbsp;</div>
-</div>
-
-<script src="/static/js/ajax.js"></script>
-
-{% endblock %}
+  <script src="/static/js/ajax.js"></script>
+</body>
+</html>
