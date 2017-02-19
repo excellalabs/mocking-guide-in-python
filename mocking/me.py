@@ -8,4 +8,4 @@ def via_gif(name):
     resp = requests.post(gif_api_endpoint, json=args)
     if resp.status_code != 200:
         raise Exception("Unable to get gif")
-    return resp._content
+    return resp.content
