@@ -63,7 +63,8 @@ Review the code for `mocking/bird.py`, and the partially completed `tests/test_m
 The tests actually pass... sometimes... try running the tests 10 times, and see how many pass
 
 ```shell
-for i in {1..10}; do pytest tests/test_mocking_bird.py ; done
+# Linux/Mac shell command
+for i in {1..10}; do pytest tests/test_mocking_bird.py ; done | grep seconds
 ```
 
 #### Why do we need mocks?
@@ -84,7 +85,8 @@ for i in {1..10}; do pytest tests/test_mocking_bird.py ; done
  * You're done when the following command results in two passing tests every time:
 
 ```shell
-for i in {1..10}; do pytest tests/test_mocking_bird.py ; done
+# Linux/Mac shell command
+for i in {1..10}; do pytest tests/test_mocking_bird.py ; done | grep seconds
 ```
 
 ### Exercise 2: Mocking Me
@@ -143,7 +145,15 @@ How do we test if `hug()` gets called when we expect it to?
 
 #### How to know you're done:
 
- * You're done when all tests pass
+ * You're done when both tests confirm whether hug() was called or not, and the tests pass
+
+```
+pytest tests/test_mocking_jay.py
+```
+
+### Closing Out
+
+At this point, ALL your tests should be passing.  Let's confirm by running all tests:
 
 ```
 pytest
