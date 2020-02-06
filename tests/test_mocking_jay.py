@@ -1,9 +1,5 @@
 from mocking.jay import Jay
-
-try:
-    from mock import patch
-except ImportError:
-    from unittest.mock import patch
+from unittest.mock import patch
 
 # What's missing:
 #     Test whether or not the 'hug' function was called while executing

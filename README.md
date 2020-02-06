@@ -10,8 +10,7 @@ This guide assumes a general knowledge about the Python programming language.
 
 To complete the exercises, you will need the following software installed on your system:
 
-* Python 2 or 3
-* virtualenv
+* Python 3
 * pip
 
 The commands provided in this guide are targeted to folks using a bash environment (Mac, Linux).  You will likely need to perform different steps on a Windows machine.
@@ -28,7 +27,7 @@ cd mocking-guide-in-python
 Then install the python dependencies in a virtual environment
 
 ```
-virtualenv env
+python3 -m venv env
 . env/bin/activate
 pip install -r requirements.txt
 ```

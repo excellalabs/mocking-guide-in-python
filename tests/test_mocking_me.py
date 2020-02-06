@@ -1,10 +1,6 @@
 from mocking.me import via_gif
 from unittest import TestCase
-
-try:
-    from mock import patch
-except ImportError:
-    from unittest.mock import patch
+from unittest.mock import patch
 
 # What's missing:
 #   Testing an external API can be done without mocking, but it only

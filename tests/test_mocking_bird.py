@@ -1,10 +1,6 @@
 from mocking.bird import Bird, DiamondRingException
 from unittest import TestCase
-
-try:
-    from mock import patch
-except ImportError:
-    from unittest.mock import patch
+from unittest.mock import patch
 
 # What's missing:
 #     The first test passes sometimes, other times it fails. The second
